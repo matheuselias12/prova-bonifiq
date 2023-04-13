@@ -25,4 +25,32 @@ namespace ProvaPub.Services
 			});
 		}
 	}
+
+    public abstract class NewPayOrder
+    {
+        public abstract decimal PayOrderNew(decimal paymentValue);
+    }
+
+    public class PaymentMethodPix : NewPayOrder
+    {
+        public override decimal PayOrderNew(decimal paymentValue)
+        {
+            return 0;
+        }
+    }
+    public class PaymentMethodCreditcard : NewPayOrder
+    {
+        public override decimal PayOrderNew(decimal paymentValue)
+        {
+            return 0;
+        }
+    }
+
+    public class PaymentMethodPaypal : NewPayOrder
+    {
+        public override decimal PayOrderNew(decimal paymentValue)
+        {
+            return 0;
+        }
+    }
 }

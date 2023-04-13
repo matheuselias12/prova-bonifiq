@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvaPub.Models;
 using ProvaPub.Repository;
+using X.PagedList;
 
 namespace ProvaPub.Services
 {
@@ -15,7 +16,7 @@ namespace ProvaPub.Services
 
         public CustomerList ListCustomers(int page)
         {
-            return new CustomerList() { HasNext = false, TotalCount = 10, Customers = _ctx.Customers.ToList() };
+            return new CustomerList() { HasNext = false, TotalCount = 10, Customers = _ctx.Customers.OrderBy(p => p.Id).ToPagedList(page, 10).ToList() };
         }
 
         public async Task<bool> CanPurchase(int customerId, decimal purchaseValue)
